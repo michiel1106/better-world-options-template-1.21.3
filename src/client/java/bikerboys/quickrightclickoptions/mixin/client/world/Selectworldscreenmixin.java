@@ -73,10 +73,29 @@ public abstract class Selectworldscreenmixin extends Screen implements RightClic
 
     @Inject(method = "render", at = @At("HEAD"))
     private void whatevs(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
+            this.textFieldWidget.setEditable(renamingworld);
+            this.textFieldWidget.setVisible(renamingworld);
+            this.textFieldWidget.setFocused(renamingworld);
+            this.confirmName.visible = renamingworld;
 
-        this.textFieldWidget.setVisible(renamingworld);
-        this.confirmName.visible = renamingworld;
+    }
 
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (renamingworld && textFieldWidget.keyPressed(keyCode, scanCode, modifiers)) {
+            return true;
+        }
+
+        return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    public boolean charTyped(char chr, int modifiers) {
+        if (renamingworld && textFieldWidget.charTyped(chr, modifiers)) {
+            return true;
+        }
+
+        return super.charTyped(chr, modifiers);
     }
 
     @Inject(method = "init", at = @At("TAIL"))
@@ -124,7 +143,10 @@ public abstract class Selectworldscreenmixin extends Screen implements RightClic
             SelectWorldScreen selectWorldScreen = (SelectWorldScreen) (Object) this;
 
             if (!textFieldWidget.mouseClicked(mouseX, mouseY, button)) {
-                renamingworld = false;
+                if (!confirmName.mouseClicked(mouseX, mouseY, button)) {
+                    renamingworld = false;
+                }
+
             }
 
             if (rightClickMenu != null && rightClickMenu.mouseClicked(mouseX, mouseY, button)) {
