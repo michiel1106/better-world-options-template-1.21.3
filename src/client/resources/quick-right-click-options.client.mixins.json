@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "bikerboys.quickrightclickoptions.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ScreenMixin",
+		"createworld.CreateWorldScreenMixin",
+		"main.TitleScreenMixin",
+		"mp.MultiplayerScreenMixin",
+		"world.Selectworldscreenmixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

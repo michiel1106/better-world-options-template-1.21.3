@@ -1,0 +1,10 @@
+accessWidener v2 named
+accessible class net/minecraft/client/texture/SpriteContents$Animation
+accessible field net/minecraft/client/texture/SpriteContents$Animation frames Ljava/util/List;
+accessible field net/minecraft/client/render/block/FluidRenderer waterSprites [Lnet/minecraft/client/texture/Sprite;
+accessible field net/minecraft/client/render/block/FluidRenderer lavaSprites [Lnet/minecraft/client/texture/Sprite;
+accessible field net/minecraft/client/gui/screen/world/WorldListWidget$WorldEntry level Lnet/minecraft/world/level/storage/LevelSummary;
+accessible method net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen removeEntry (Z)V
+accessible method net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen editEntry (Z)V
+accessible field net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen selectedEntry Lnet/minecraft/client/network/ServerInfo;
+accessible method net/minecraft/client/gui/screen/multiplayer/MultiplayerScreen addEntry (Z)V
