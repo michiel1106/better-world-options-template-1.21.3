@@ -32,7 +32,7 @@ public class RightClickMenuWidget implements Drawable {
     public void render(DrawContext context, int mouseX, int mouseY, float deltaticks) {
 
         this.ageTicks++; // Update animation timer
-        context.getMatrices().push();
+        context.getMatrices().pushMatrix();
         if (QuickConfig.RENDER_ANIMATION) {
             // Calculate animation scale
             float duration = 5f; // in ticks
@@ -44,9 +44,9 @@ public class RightClickMenuWidget implements Drawable {
             // Center scaling around menu center
             float centerX = x + width / 2f;
             float centerY = y + (options.size() * optionHeight) / 2f;
-            context.getMatrices().translate(centerX, centerY, 0);
-            context.getMatrices().scale(scale, scale, 1f);
-            context.getMatrices().translate(-centerX, -centerY, 0);
+            context.getMatrices().translate(centerX, centerY);
+            context.getMatrices().scale(scale, scale);
+            context.getMatrices().translate(-centerX, -centerY);
 
         }
 
@@ -71,10 +71,10 @@ public class RightClickMenuWidget implements Drawable {
             // Draw text centered vertically in the box
             int textX = optionX + 5;
             int textY = optionY + (optionHeight - 9) / 2;
-            context.drawText(MinecraftClient.getInstance().textRenderer, text, textX, textY, 0xFFFFFF, false);
+            context.drawText(MinecraftClient.getInstance().textRenderer, text, textX, textY, 0xFFFFFFFF, false);
         }
 
-        context.getMatrices().pop(); // Restore matrix stack
+        context.getMatrices().popMatrix(); // Restore matrix stack
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {

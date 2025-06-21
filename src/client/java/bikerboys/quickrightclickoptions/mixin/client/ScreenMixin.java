@@ -29,10 +29,10 @@ public class ScreenMixin {
 
         if (QuickConfig.COLOUR_VIEW) {
 
-            context.getMatrices().push();
-            context.getMatrices().translate(0, 0, 3);
+            context.getMatrices().pushMatrix();
+            context.getMatrices().translate(0, 0);
             context.fill(0, 0, 22, 22, new Color(QuickConfig.R, QuickConfig.G, QuickConfig.B).getRGB());
-            context.getMatrices().pop();
+            context.getMatrices().popMatrix();
 
         }
 
@@ -41,10 +41,10 @@ public class ScreenMixin {
         if (client.currentScreen instanceof RightClickMenuAccess accessor) {
             RightClickMenuWidget menu = accessor.getRightClickMenu();
             if (menu != null) {
-                context.getMatrices().push();
-                context.getMatrices().translate(0, 0, 1);
+                context.getMatrices().pushMatrix();
+                context.getMatrices().translate(0, 0);
                 menu.render(context, mouseX, mouseY, delta);
-                context.getMatrices().pop();
+                context.getMatrices().popMatrix();
             }
         }
     }
